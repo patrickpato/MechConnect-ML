@@ -11,11 +11,11 @@ async def welcome():
 
 @prompt.get("/view_diagnostics")
 async def find_all():
-    print(conn.local.user.find())
-    print(usersPrompts(conn.local.user.find()))
-    return usersPrompts(conn.local.prompt.find()) 
+    print(conn.mechconnect_prompts.user.find())
+    print(usersPrompts(conn.mechconnect_prompts.user.find()))
+    return usersPrompts(conn.mechconnect_prompts.prompt.find()) 
 
 @prompt.post("/perform_diagnostics")
 async def insert_prompts(prompt: Prompts):
-    conn.local.prompt.insert_one(dict(prompt))
-    return usersPrompts(conn.local.prompt.find()) 
+    conn.mechconnect_prompts.prompt.insert_one(dict(prompt))
+    return usersPrompts(conn.mechconnect_prompts.prompt.find()) 
